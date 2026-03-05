@@ -17,16 +17,19 @@ graph TD
     end
 
     subgraph "Storage & Processing"
-        B --> E[(Cloud Storage)]
-        E --> F[(BigQuery)]
-        D --> G[(Firestore - State)]
-        D --> F
+        B --> |Raw Data (Bronce)|E[(Cloud Storage)]
+        E --> |Duplicated Data (Silver)|F[(BigQuery)]
+        F --> |Cleaned Data (Gold)|I[(BigQuery - marts)]
+        D --> K[(Pub/Sub)]
+        K --> L[(Cloud Run Service)]
+        L --> G[(Firestore - State)]
+        L --> I
     end
 
     subgraph "Action Layer"
         G --> H{Signal Detected?}
-        H -->|Yes| I[Discord Alert]
-        F --> J[Data Analyst Dashboard]
+        H -->|Yes| M[Discord Alert]
+        I --> J[Data Analyst Dashboard]
     end
 ```
 
