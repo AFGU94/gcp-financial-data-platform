@@ -17,9 +17,9 @@ graph TD
     end
 
     subgraph "Storage & Processing"
-        B --> |Raw Data (Bronce)|E[(Cloud Storage)]
-        E --> |Duplicated Data (Silver)|F[(BigQuery)]
-        F --> |Cleaned Data (Gold)|I[(BigQuery - marts)]
+        B --> |Raw Data - Bronce|E[(Cloud Storage)]
+        E --> |Duplicated Data - Silver|F[(BigQuery)]
+        F --> |Cleaned Data - Gold|I[(BigQuery - marts)]
         D --> K[(Pub/Sub)]
         K --> L[(Cloud Run Service)]
         L --> G[(Firestore - State)]
