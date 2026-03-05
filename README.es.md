@@ -10,7 +10,7 @@ Este repositorio centraliza una plataforma de datos financiera diseñada para de
 La plataforma se divide en dos capas operativas que conviven para ofrecer una visión 360° del mercado:
 
 ### 1. Layer de Análisis Histórico (Batch)
-**Repositorio:** https://github.com/AFGU94/finance-lakehouse-gcp
+**Repositorio:** https://github.com/AFGU94/finance-lakehouse-batching
 * **Objetivo:** Ingesta masiva de datos históricos para análisis de tendencias y entrenamiento de modelos.
 * **Stack:** Python (Yahoo Finance API), GCS (Bronze), BigQuery (Silver/Gold).
 * **Highlights:** Implementación de particionamiento y clustering en BigQuery para optimización de costos y rendimiento.

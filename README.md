@@ -14,27 +14,27 @@ graph TD
     subgraph "Ingestion Layer"
         A[Yahoo Finance API] -->|Batch| B(Cloud Run Job)
         C[Binance API] -->|Real-time| D(Cloud Run Job)
+        D --> K[Pub/Sub]
     end
 
     subgraph "Storage & Processing"
-        B --> |Raw Data - Bronce|E[(Cloud Storage)]
+        B --> |Raw Data - Bronze|E[(Cloud Storage)]
         E --> |Duplicated Data - Silver|F[(BigQuery)]
-        F --> |Cleaned Data - Gold|I[(BigQuery - marts)]
-        D --> K[(Pub/Sub)]
-        K --> L[(Cloud Run Service)]
+        F --> |Cleaned Data - Gold - DBT|I[(BigQuery - marts)]
+        K --> L(Cloud Run Service)
         L --> G[(Firestore - State)]
         L --> I
     end
 
     subgraph "Action Layer"
-        G --> H{Signal Detected?}
+        G --> H{Signal Verified?}
         H -->|Yes| M[Discord Alert]
         I --> J[Data Analyst Dashboard]
     end
 ```
 
 ### 1. Historical Analytical Layer (Batch)
-**Repository:** https://github.com/AFGU94/finance-lakehouse-gcp
+**Repository:** https://github.com/AFGU94/finance-lakehouse-batching
 
 **Objective:** Massive ingestion of historical market data for trend analysis and model training.
 
