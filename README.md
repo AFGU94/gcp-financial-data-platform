@@ -21,7 +21,7 @@ graph TD
         B --> |Raw Data - Bronze|E[(Cloud Storage)]
         E --> |Duplicated Data - Silver|F[(BigQuery)]
         F --> |Cleaned Data - Gold - DBT|I[(BigQuery - marts)]
-        K --> L(Cloud Run Service)
+        K --> |Push|L(Cloud Run Service)
         L --> G[(Firestore - State)]
         L --> I
     end
