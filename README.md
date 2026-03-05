@@ -28,6 +28,7 @@ graph TD
         H -->|Yes| I[Discord Alert]
         F --> J[Data Analyst Dashboard]
     end
+```
 
 ### 1. Historical Analytical Layer (Batch)
 **Repository:** https://github.com/AFGU94/finance-lakehouse-gcp
